@@ -6,6 +6,10 @@ const MessageSchema = new mongoose.Schema({
         default: "",
         trim: true
     },
+    authorID: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+    },
     message: {
         type: String,
         required: true,
@@ -15,9 +19,30 @@ const MessageSchema = new mongoose.Schema({
         type: String,
         default: "",
     },
+    showFor: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User',
+        }
+    ],
     createdAt: {
         type: Date,
         default: Date.now,
+    }
+})
+
+const MemberSchema = new mongoose.Schema({
+    memberID: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+    },
+    memberName: {
+        type: String,
+        trim: true
+    },
+    memberEmail: {
+        type: String,
+        trim: true
     }
 })
 
@@ -30,8 +55,7 @@ const groupSchema = new mongoose.Schema({
     },
     members: [
         {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'User',
+            type: MemberSchema,
         }
     ],
     admin: [

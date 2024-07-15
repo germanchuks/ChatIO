@@ -6,6 +6,10 @@ const MessageSchema = new mongoose.Schema({
         default: "",
         trim: true
     },
+    authorID: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+    },
     message: {
         type: String,
         required: true,
@@ -15,6 +19,12 @@ const MessageSchema = new mongoose.Schema({
         type: String,
         default: "",
     },
+    showFor: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User',
+        }
+    ],
     createdAt: {
         type: Date,
         default: Date.now,
@@ -39,6 +49,7 @@ const chatSchema = new mongoose.Schema({
         default: Date.now,
     }
 });
+
 
 const Chat = mongoose.model('Chat', chatSchema);
 
