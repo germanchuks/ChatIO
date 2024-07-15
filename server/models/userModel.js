@@ -83,12 +83,12 @@ const UserSchema = new mongoose.Schema({
             ref: 'Chat'
         }
     ],
-    groups: [
-        {
+    groups: [{
+        groupID: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Group'
         }
-    ],
+    }],
     sentMessages: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Message'
