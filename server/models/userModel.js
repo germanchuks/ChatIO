@@ -89,14 +89,22 @@ const UserSchema = new mongoose.Schema({
             ref: 'Group'
         }
     }],
-    sentMessages: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Message'
+    theme: {
+        type: String,
+        default: 'light'
+    },
+    recentInteractions: [{
+        group: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Group',
+            default: null
+        },
+        friend: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Chat',
+            default: null
+        }
     }],
-    receivedMessages: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Message'
-    }]
 }, { timestamps: true })
 
 module.exports = mongoose.model('User', UserSchema)
