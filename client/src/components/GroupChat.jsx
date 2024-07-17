@@ -197,10 +197,10 @@ function GroupChat({
                         return (
                           <div
                               key={index}
-                              className={`msg-item ${msg.author === user ? 'user-msg-item' : ''}`}
+                              className={`msg-item ${msg.author === user.split(' ')[0] ? 'user-msg-item' : ''}`}
                           >
                               {
-                                  msg.author !== user &&
+                                  msg.author !== user.split(' ')[0] &&
                                   <Avatar sx={{ width: 20, height: 20, fontSize: 'small', bgcolor: deepPurple[500] }}>{msg.author[0].toUpperCase()}</Avatar>
                               }
                               <div className="msg-info">
@@ -226,6 +226,7 @@ function GroupChat({
                     cleanOnEnter
                     onEnter={handleOnEnter}
                     placeholder="Type a message"
+                    fontSize={'75%'}
                     theme={ darkMode ? 'dark' : 'light'}
                 />
             </div>
@@ -239,6 +240,8 @@ const GroupChatStyled = styled.div`
     width: 100%;
     height: 80vh;
     margin-block: 0.5rem;
+    font-size: 85%;
+
 
     .chat-header {
         display: flex;
@@ -360,7 +363,7 @@ const GroupChatStyled = styled.div`
         display: flex;
         height: 85%;
         flex-direction: column;
-        padding: 0 0.2rem 1rem 0.6rem;
+        padding: 0.4rem 0.2rem 1rem 0.6rem;
         gap: 1rem;
         font-size: 75%;
 

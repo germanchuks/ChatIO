@@ -141,7 +141,6 @@ const ChatBoxStyled = styled.div`
           color: #fff;
           border-radius: 0.5rem;
           gap: 0.5rem;
-          width: 20%;
           font-size: 55%;
           background-color: #002c6a;
           cursor: pointer;
@@ -154,8 +153,8 @@ const ChatBoxStyled = styled.div`
           display: flex;
           align-items: center;
           justify-content: flex-end;
-          width: 80%;
           gap: 0.5rem;
+          flex: 1;
 
           .delete-button {
             padding: 0.5rem;

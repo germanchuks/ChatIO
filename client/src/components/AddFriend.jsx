@@ -3,15 +3,13 @@ import styled from 'styled-components'
 import { useGlobalContext } from '../context/GlobalContext'
 import { InputAdornment } from '@mui/material';
 import { TextField } from '@mui/material'
-import Box from '@mui/material/Box';
 import { toast } from 'react-hot-toast';
 import axios from 'axios';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 
 function AddFriend() {
-  const { userID, setShowSearch, searchResult, setSearchResult } = useGlobalContext();
-  const [keyword, setKeyword] = useState('')
+  const { userID, setShowSearch, keyword, setKeyword, searchResult, setSearchResult } = useGlobalContext();
 
 
   const findFriends = async () => {
@@ -36,7 +34,7 @@ function AddFriend() {
     <AddFriendStyled>
         <TextField
             name="add-friend"
-            placeholder="Enter keyword..."
+            placeholder="Find Friends..."
             value={keyword}
             onChange={(event) => setKeyword(event.target.value)}
             type={"text"}
@@ -44,7 +42,7 @@ function AddFriend() {
             required
             autoComplete="off"
             style={{ background: "#fff", borderRadius: "5px" }}
-            sx={{'& ::placeholder':{fontSize:'70%'}}}
+            sx={{'& ::placeholder':{fontSize:'80%', fontWeight:'700'}}}
             InputLabelProps={{ shrink: true }}
             InputProps={{
                 style: { fontSize: '65%' },

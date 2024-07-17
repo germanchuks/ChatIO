@@ -122,17 +122,24 @@ function Groups() {
             {
               groups.length ?
                 groups.map((group) => {
+                  
+                  const firstThreeMembers = group.members.slice(0, 3).map(member => member.memberEmail);
+
                   return (
 
                     <div className="group-item" key={group._id}>
                         <div className="group-avatar">
-                            <Avatar sx={{ width: 30, height: 30, bgcolor: deepPurple[800] }}>{group.groupName[0].toUpperCase()}</Avatar>
+                            <Avatar sx={{ width: 30, height: 30, fontSize: '80%', bgcolor: deepPurple[800] }}>{group.groupName[0].toUpperCase()}</Avatar>
                         </div>
                         <div
                           className="group-details"
                           onClick={() => openChat(group._id, group.groupName, group.members, group.admin)}
                         >
                           <span>{group.groupName.charAt(0).toUpperCase() + group.groupName.slice(1)}</span>
+                          <span className='first-group-members'>
+                            {firstThreeMembers.join(', ')}
+                            {group.members.length > 3 && '...'}
+                          </span>
                         </div>
                         <div
                             onClick={() => toggleOptionButton(group._id)} 
@@ -261,6 +268,11 @@ const GroupsStyled = styled.div`
         display: flex;
         flex-direction: column;
         flex: 1;
+        gap: 0.2rem;
+
+        .first-group-members {
+          font-size: 55%;
+        }
       }
 
       .group-options {
@@ -280,6 +292,8 @@ const GroupsStyled = styled.div`
         top: 55px; 
         right: 10px; 
         z-index: 1; 
+        font-size: 70%;
+        font-weight: bolder;
         background: #ffffff;
         padding: 0.5rem;
         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.829);
@@ -292,7 +306,7 @@ const GroupsStyled = styled.div`
         .option-item {
           display: flex;
           width: 100%;
-          padding-top: 0.5rem;
+          padding-top: 0.3rem;
           justify-content: space-between;
           align-items: center;
           border-bottom: 0.7px solid #383838;

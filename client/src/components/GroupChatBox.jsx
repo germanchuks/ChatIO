@@ -133,7 +133,7 @@ const GroupChatBoxStyled = styled.div`
 
     .control-buttons {
         display: flex;
-        gap: 0.5rem;
+        gap: 1rem;
 
         .back-button {
           padding: 0.5rem;
@@ -143,8 +143,7 @@ const GroupChatBoxStyled = styled.div`
           justify-content: space-between;
           color: #fff;
           border-radius: 0.5rem;
-          gap: 0.2rem;
-          width: 20%;
+          gap: 0.5rem;
           font-size: 55%;
           background-color: #002c6a;
           cursor: pointer;
@@ -157,7 +156,7 @@ const GroupChatBoxStyled = styled.div`
           display: flex;
           align-items: center;
           justify-content: flex-end;
-          width: 75%;
+          flex: 1;
           gap: 0.5rem;
 
           .delete-button {
