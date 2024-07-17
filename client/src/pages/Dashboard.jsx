@@ -12,6 +12,8 @@ import JoinGroup from '../components/JoinGroup';
 import ChangeGroupName from '../components/ChangeGroupName';
 import SuggestionList from '../components/SuggestionList';
 import SettingsBox from '../components/SettingsBox';
+import SetDisplayName from '../components/SetDisplayName';
+import ChangePassword from '../components/ChangePassword';
 
 function Dashboard() {
 
@@ -30,7 +32,8 @@ function Dashboard() {
     showNewGroupName,
     fetchGroupDetail, 
     showSearch, setShowSearch, searchResult, setSearchResult,
-    showSettings, setShowSetings } = useGlobalContext();
+    showSettings, setShowSettings, showChangeUsername, setShowChangeUsername,
+    showChangePassword, setShowChangePassword } = useGlobalContext();
 
   const [isSideOpen, setIsSideOpen] = useState(false);
 
@@ -82,7 +85,7 @@ function Dashboard() {
         transition: 'all 1s ease-in-out'
       }}>
         {!showChat && !showGroupChat && <Header />}
-        <div className='content'>
+        <div className='content' onClick={() => setShowSettings(false)}>
             <NavMenu showChat={showChat} showGroupChat={showGroupChat} />
             <div className="main-content-box">
               <div
@@ -91,8 +94,10 @@ function Dashboard() {
                 }}
                 className="side-menu-button" onClick={toggleSideMenu}>{menuIcon}</div>
               <div className="main-content">
-                { showSearch && <SuggestionList />}
                 { showSettings && <SettingsBox />}
+                { showChangeUsername && <SetDisplayName />}
+                { showChangePassword && <ChangePassword />}
+                { showSearch && <SuggestionList />}
                 { showChat && <ChatBox /> }
                 { isSideOpen && <SideMenu /> }
                 { isCreateGroup && <CreateGroup /> }

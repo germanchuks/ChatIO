@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { Toaster } from 'react-hot-toast';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { useGlobalContext } from './context/GlobalContext';
-import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import Protected from './pages/Protected';
 import Login from './pages/Login';
@@ -17,10 +16,6 @@ function App() {
   const { isAuthenticated } = useGlobalContext();
 
   const router = createBrowserRouter([
-    {
-      path: "/home",
-      element: <Home />,
-    },
     {
       path: "/",
       element: <Login />,

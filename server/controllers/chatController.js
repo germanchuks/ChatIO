@@ -63,7 +63,6 @@ exports.storeGroupMessage = async (req, res) => {
             message: "Message saved"
         })
     } catch (error) {
-        console.log(error)
         return res.json({
             error: error
         })
@@ -176,7 +175,6 @@ exports.clearOrDeleteMessagesInGroupChat = async (req, res) => {
 
         if (deleteForAll) {
             for (const message of group.messages) {
-                console.log(message)
                 if (message.authorID && message.authorID.toString() === userID) {
                     message.message = 'Deleted Message';
                 }
