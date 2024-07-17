@@ -24,6 +24,8 @@ export const GlobalProvider = ({ children }) => {
     const [showChat, setShowChat] = useState(false);
     const [ showGroupChat, setShowGroupChat ] = useState(false);
     
+    const [ recentInteraction, setRecentInteraction] = useState({})
+
     const [chatID, setChatID] = useState("");
     const [ groupID, setGroupID ] = useState('');
 
@@ -119,6 +121,20 @@ export const GlobalProvider = ({ children }) => {
         }
     };
 
+    const getRecentInteraction = async (userID) => {
+        try {
+            const response = await axios.get(`/get-info/${userID}`)
+            if (response.data.error) {
+                console.log(response.data.error);
+                return;
+            }
+            setRecentInteraction(response.data.recentInteraction);
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <GlobalContext.Provider value={{
             user, setUser, userEmail, setUserEmail,
@@ -140,7 +156,8 @@ export const GlobalProvider = ({ children }) => {
             getPendingRequests, pendingRequests, setPendingRequests,
             currentChatDetails, setCurrentChatDetails,
             fetchGroupDetail,
-            showSettings, setShowSettings
+            showSettings, setShowSettings,
+            getRecentInteraction, recentInteraction
         }}>
             {children}
         </GlobalContext.Provider>
