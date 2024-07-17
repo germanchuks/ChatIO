@@ -9,10 +9,10 @@ exports.getUserInfo = async (req, res) => {
     try {
         const user = await UserSchema.findById(userID)
 
-        const { avatarImage } = user;
+        const { recentInteractions } = user;
 
         return res.json({
-            avatar: avatarImage,
+            recentInteraction: recentInteractions
         });
 
     } catch {
@@ -21,6 +21,32 @@ exports.getUserInfo = async (req, res) => {
         })
     }
 };
+
+exports.updateTheme = async (req, res) => {
+    const { userID, selectedTheme } = req.body
+
+    try {
+        const user = await UserSchema.findByIdAndUpdate(
+            userID,
+            { theme: selectedTheme },
+            { new: true }
+        );
+
+        if (!user) {
+            return res.status(404).json({
+                error: 'User not found'
+            });
+        }
+
+        return res.json({
+            message: 'Theme Updated'
+        })
+    } catch (error) {
+        return res.json({
+            error: 'Could not update theme'
+        })
+    }
+}
 
 
 // Update user password
@@ -186,6 +212,34 @@ exports.declineFriendRequest = async (req, res) => {
     }
 
 }
+
+exports.findFriends = async (req, res) => {
+    const { userID, keyword } = req.body;
+
+    try {
+        if (keyword.length < 3) {
+            return res.json({
+                error: "Keyword must have 3 or more characters"
+            })
+        }
+        const friends = await UserSchema.find({
+            _id: { $ne: userID },
+            $or: [
+                { email: { $regex: keyword, $options: 'i' } },
+                { username: { $regex: keyword, $options: 'i' } }
+            ]
+        });
+
+        return res.json({
+            suggestedFriends: friends
+        });
+    } catch (error) {
+        return res.status(500).json({
+            error: 'Error finding friends'
+        });
+    }
+}
+
 
 exports.sendFriendRequest = async (req, res) => {
     const { userID, email } = req.body;

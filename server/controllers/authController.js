@@ -94,14 +94,16 @@ exports.loginUser = async (req, res) => {
                 username: user.username,
             }
 
-            const { id, email, username } = user
+            const { id, email, username, theme, recentInteractions } = user
 
             jwt.sign(payload, secret, {}, (err, token) => {
                 if (err) throw err;
                 res.cookie('token', token).json({
                     id: id,
                     email: email,
-                    username: username
+                    username: username,
+                    theme: theme,
+                    recentInteractions: recentInteractions
                 })
             })
         }
@@ -130,11 +132,13 @@ exports.getUser = async (req, res) => {
     if (token) {
         jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, {}, (err, user) => {
             if (err) throw err;
-            const { id, email, username } = user
+            const { id, email, username, theme, recentInteractions } = user
             res.json({
                 id: id,
                 email: email,
                 username: username,
+                theme: theme,
+                recentInteractions: recentInteractions
             })
         })
     } else {
