@@ -107,8 +107,3 @@ We welcome contributions to ChatIO! If you're interested in helping improve the 
 
 ### Homepage
 ![home](https://github.com/germanchuks/ChatIO/assets/homepage-screenshot)
-
-
-## License 📄
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
