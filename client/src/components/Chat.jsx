@@ -5,6 +5,7 @@ import ScrollToBottom from 'react-scroll-to-bottom';
 import Avatar from '@mui/material/Avatar';
 import { deepPurple } from '@mui/material/colors';
 import InputEmoji from "react-input-emoji";
+import { TextField, InputAdornment, IconButton } from '@mui/material';
 
 
 function Chat({

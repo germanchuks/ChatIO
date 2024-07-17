@@ -34,19 +34,19 @@ function ChangeGroupName() {
         <ChangeGroupNameStyled>
             <TextField
                     name="new-name"
-                    placeholder="Enter Name"
+                    placeholder="Enter New Name"
                     value={newName}
                     onChange={(event) => setNewName(event.target.value)}
                     type={"text"}
                     variant="outlined"
                     autoComplete="off"
                     autoFocus
-                    size="medium"
+                    size="small"
                     required
                     style={{ background: "#fff", height: 'fit-content', width: '90%', borderRadius: '0.2rem' }}
-                    sx={{'& ::placeholder':{fontSize:'small'}}}
+                    sx={{'& ::placeholder':{fontSize:'75%'}}}
                     InputLabelProps={{ shrink: true }}
-                    inputProps={{ style: { fontSize: 18 } }}
+                    inputProps={{ style: { fontSize: '60%' } }}
                     />
                     <div className="options-button">
                         <span className="cancel-button" onClick={() => closeDialog()}>
@@ -62,11 +62,12 @@ function ChangeGroupName() {
 
 const ChangeGroupNameStyled = styled.div`
     position: fixed;
-    left: 47.5%;
+    left: 55.5%;
     top: 15%;
-    width: 40%;
+    width: fit-content;
 	background: #233142; 
     z-index: 1000;
+    font-size: 70%;
     transition: transform 0.3s ease-in-out;
     color: #ffffff;
     display: flex;
@@ -78,17 +79,18 @@ const ChangeGroupNameStyled = styled.div`
     .options-button {
         display: flex;
         width: 100%;
-        gap: 1rem;
+        gap: 0.2rem;
         justify-content: space-evenly;
         align-items: center;
         padding: 0.5rem;
+
 
         span {
             background-color: #10141a;
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 40%;
+            width: 50%;
             &:hover {
                 background-color: #ffffff68;
             }
@@ -100,8 +102,10 @@ const ChangeGroupNameStyled = styled.div`
                 border: none;
                 width: 100%;
                 height: 100%;
+                font-size: 60%;
+
                 color: #fff;
-                padding: 1rem 0.5rem;
+                padding: 0.75rem 0.5rem;
 
             }
         }

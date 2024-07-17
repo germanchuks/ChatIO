@@ -5,14 +5,14 @@ import { renameIcon, passwordIcon, signOutIcon } from '../utils/icons'
 
 function SettingsBox() {
 
-  const { darkMode, logout } = useGlobalContext();
+  const { darkMode, logout, setShowChangeUsername, setShowChangePassword } = useGlobalContext();
 
   const settingOptions = [
     {
         id: 1,
-        title: 'Change Display Name',
+        title: 'Change Username',
         onClick: () => {
-            console.log('Change Name clicked');
+            setShowChangeUsername(true);
         },
         icon: renameIcon
 
@@ -21,6 +21,7 @@ function SettingsBox() {
         id: 2,
         title: 'Update Password',
         onClick: () => {
+            setShowChangePassword(true);
             console.log('Update Password clicked');
         },
         icon: passwordIcon
