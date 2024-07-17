@@ -3,7 +3,7 @@ const userSocketMap = new Map();
 
 module.exports = (io) => {
     io.on("connection", (socket) => {
-        console.log("Connected", socket.id);
+        // console.log("Connected", socket.id);
 
         // Handle join event
         socket.on("join", ({ chatID, userID }) => {
@@ -18,7 +18,7 @@ module.exports = (io) => {
                 user: "admin",
                 text: `Welcome to the room`,
             });
-            console.log(`A user joined room: ${chatID}`);
+            // console.log(`A user joined room: ${chatID}`);
 
             // socket.to(chatID).emit('new_user', { userID });
 
@@ -33,7 +33,7 @@ module.exports = (io) => {
         // Leave chat room
         socket.on('leave_chat', (chatID) => {
             socket.leave(chatID);
-            console.log(`User left room: ${chatID}`);
+            // console.log(`User left room: ${chatID}`);
             userSocketMap.delete(socket.userID);
             if (socket.chatID) {
                 socket.to(socket.chatID).emit('user_left', { userID: socket.userID, socketID: socket.id });
@@ -48,7 +48,7 @@ module.exports = (io) => {
 
         // Handle the socket.io disconnect event
         socket.on("disconnect", () => {
-            console.log("User left", socket.id);
+            // console.log("User left", socket.id);
 
         });
 

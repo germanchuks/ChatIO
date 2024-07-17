@@ -8,23 +8,29 @@ export const GlobalProvider = ({ children }) => {
     const [user, setUser] = useState('');
     const [userEmail, setUserEmail] = useState('');
     const [userID, setUserID] = useState('');
-
     const [darkMode, setDarkMode] = useState(null);
 
+
+    // Dialog Boxes
+    const [ showChangeUsername, setShowChangeUsername ] = useState('');
+    const [ showChangePassword, setShowChangePassword ] = useState('');
     const [ showSearch, setShowSearch ] = useState(false);
+    const [showNewGroupName, setShowNewGroupName] = useState(false);
+    const [ isCreateGroup, setIsCreateGroup ] = useState(false);
+    const [ isJoinGroup, setIsJoinGroup ] = useState(false);
+    const [showSettings, setShowSettings] = useState(false);
+
+    const [keyword, setKeyword] = useState('')
     const [ searchResult, setSearchResult] = useState([]);
 
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [recipientID, setRecipientID] = useState([]);
-    const [ isCreateGroup, setIsCreateGroup ] = useState(false);
-    const [ isJoinGroup, setIsJoinGroup ] = useState(false);
     const [ groupOptionClicked, setGroupOptionClicked ] = useState(false);
-    const [showNewGroupName, setShowNewGroupName] = useState(false);
 
     const [showChat, setShowChat] = useState(false);
     const [ showGroupChat, setShowGroupChat ] = useState(false);
     
-    const [ recentInteraction, setRecentInteraction] = useState({})
+    const [ recentInteraction, setRecentInteraction ] = useState({})
 
     const [chatID, setChatID] = useState("");
     const [ groupID, setGroupID ] = useState('');
@@ -35,7 +41,6 @@ export const GlobalProvider = ({ children }) => {
     const [pendingRequests, setPendingRequests] = useState([]);
     const [currentChatDetails, setCurrentChatDetails] = useState({});
 
-    const [showSettings, setShowSettings] = useState(false);
 
     // Handle User Login
     const login = async (inputs) => {
@@ -146,6 +151,7 @@ export const GlobalProvider = ({ children }) => {
             darkMode, setDarkMode,
             showSearch, setShowSearch,
             searchResult, setSearchResult,
+            keyword, setKeyword,
             getFriendList, friends, setFriends,
             getGroups, groups, setGroups,
             groupID, setGroupID,
@@ -157,7 +163,8 @@ export const GlobalProvider = ({ children }) => {
             currentChatDetails, setCurrentChatDetails,
             fetchGroupDetail,
             showSettings, setShowSettings,
-            getRecentInteraction, recentInteraction
+            getRecentInteraction, recentInteraction, showChangeUsername, setShowChangeUsername,
+            showChangePassword, setShowChangePassword
         }}>
             {children}
         </GlobalContext.Provider>

@@ -14,6 +14,8 @@ import { FaUserFriends } from "react-icons/fa";
 import { MdOutlinePassword } from "react-icons/md";
 import { MdDriveFileRenameOutline } from "react-icons/md";
 import { CgLogOut } from "react-icons/cg";
+import { MdAutoDelete } from "react-icons/md";
+import { SiCcleaner } from "react-icons/si";
 
 export const menuIcon = <IoMenuOutline />
 export const refreshIcon = <FiRefreshCw />
@@ -31,3 +33,5 @@ export const friendsIcon = <FaUserFriends />
 export const passwordIcon = <MdOutlinePassword />
 export const userNameIcon = <MdDriveFileRenameOutline />
 export const signOutIcon = <CgLogOut />
+export const deleteIcon = <MdAutoDelete />
+export const clearIcon = <SiCcleaner />

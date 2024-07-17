@@ -22,6 +22,28 @@ exports.getUserInfo = async (req, res) => {
     }
 };
 
+exports.updateUsername = async (req, res) => {
+    const { newname } = req.body
+    const { userID } = req.params
+
+    try {
+        const user = await UserSchema.findByIdAndUpdate(
+            userID,
+            { username: newname },
+            { new: true }
+        );
+
+        const { username } = user;
+        return res.json({
+            username: username
+        })
+    } catch {
+        return res.json({
+            error: "Could not update username. Try again later"
+        })
+    }
+};
+
 exports.updateTheme = async (req, res) => {
     const { userID, selectedTheme } = req.body
 
