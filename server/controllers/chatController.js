@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 
 
 exports.storeMessage = async (req, res) => {
-    const { newMessage, chatID } = req.body;
+    const { newMessage, chatID, userID } = req.body;
 
     try {
         const chat = await ChatSchema.findById(chatID);
@@ -18,6 +18,10 @@ exports.storeMessage = async (req, res) => {
                 messages: newMessage
             }
         }, { new: true });
+
+        // await UserSchema.findByIdAndUpdate(userID, {
+        //     $set: { 'recentInteractions.friend': chatID }
+        // });
 
         return res.json({
             message: "Message saved"
@@ -32,7 +36,7 @@ exports.storeMessage = async (req, res) => {
 
 
 exports.storeGroupMessage = async (req, res) => {
-    const { newMessage, groupID } = req.body;
+    const { newMessage, groupID, userID } = req.body;
     try {
         const group = await GroupSchema.findById(groupID)
 
@@ -50,6 +54,10 @@ exports.storeGroupMessage = async (req, res) => {
 
         group.messages.push(newMessage);
         await group.save();
+
+        // await UserSchema.findByIdAndUpdate(userID, {
+        //     $set: { 'recentInteractions.group': groupID }
+        // });
 
         return res.json({
             message: "Message saved"
