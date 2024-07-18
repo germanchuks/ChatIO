@@ -84,7 +84,7 @@ ChatIO is built using a modern and scalable technology stack:
 
 ## Usage
 
-- Visit the deployed app at [ChatIO](https://chatio.onrender.com).
+- Visit the deployed app at [ChatIO]([https://chatio.onrender.com](https://chatio-mdks.onrender.com).
 - Create an account or log in.
 - Start a chat with a friend or join a group chat.
 - Enjoy real-time messaging with a seamless experience.
